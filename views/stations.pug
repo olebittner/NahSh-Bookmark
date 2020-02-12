@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    table
+        tr
+            th ID
+            th Name
+            th Lines
+
+        each station in stations
+            tr(onclick=`window.location='/departures?id=${station.id}'`)
+                td= station.id
+                td= station.name
+                td= station.lines.map(function (line) { return line.name; }).join(", ")
