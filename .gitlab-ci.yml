@@ -1,0 +1,23 @@
+stages:
+  - deploy
+  
+deploy:
+  stage: deploy
+  tags:
+    - host
+    
+  only:
+    - master
+    
+  environment:
+    name: production
+    url: https://hvv.oleb.it
+    
+  variables:
+    target: /opt/nodejs/hvv_oleb
+    
+  script:
+    - "rsync -rlvc --delete --exclude=\".*\" . $target"
+    - "cd $target"
+    - "npm install"
+    - "pm2 reload ecosystem.config.js --env production"
