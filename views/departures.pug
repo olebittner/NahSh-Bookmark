@@ -1,19 +1,19 @@
 extends layout
 
 block content
-    table
+    table(class='mdl-data-table mdl-js-data-table mdl-shadow--2dp')
         tr
-            th Departure
-            th Delay
-            th Line
-            th Direction
+            th(class='mdl-data-table__cell--non-numeric' align='center') Departure
+            th(class='mdl-data-table__cell--non-numeric') Delay
+            th(class='mdl-data-table__cell--non-numeric') Line
+            th(class='mdl-data-table__cell--non-numeric') Direction
 
         each departure in departures
             tr
-                td= dateFormat(new Date(departure.when), "HH:MM")
-                td
+                td(class='mdl-data-table__cell--non-numeric' align='center')= dateFormat(new Date(departure.when), "HH:MM")
+                td(class='mdl-data-table__cell--non-numeric')
                     if departure.delay
                         = departure.delay
                     else
-                td= departure.line.name
-                td= departure.direction
+                td(class='mdl-data-table__cell--non-numeric')= departure.line.name
+                td(class='mdl-data-table__cell--non-numeric')= departure.direction

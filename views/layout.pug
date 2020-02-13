@@ -3,5 +3,10 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/material.min.css')
+    script(src='/javascripts/material.min.js')
   body
-    block content
+    header.header
+      h2= title
+    div(class='centered-body')
+      block content
