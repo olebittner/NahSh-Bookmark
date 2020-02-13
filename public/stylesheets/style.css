@@ -2,6 +2,21 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+a {
+  color: #00B7FF;
+}
+
+table {
+  width:auto;
+  max-width: 90%;
+}
+td {
+  white-space:nowrap;
+}
+td:last-child {
+  width:100%;
+}
+
 .centered-body {
   padding-top: 10px;
   max-width: 35%;
@@ -16,18 +31,4 @@ body {
   height: 70px;
   background-color: #cc0025;
   color: #FFFFFF;
-}
-
-a {
-  color: #00B7FF;
-}
-
-table {
-  width:auto;
-}
-td {
-  white-space:nowrap;
-}
-td:last-child {
-  width:100%;
 }

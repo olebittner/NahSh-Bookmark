@@ -4,16 +4,20 @@ const hafas = require('nahsh-hafas');
 const dateFormat = require('dateformat');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+/*router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
-});
+});*/
 
-router.get('/stations', function (req, res, next) {
-    hafas.locations(req.query.s, {addresses: false, poi: false, linesOfStops: true, language: 'de'})
-        .then(function (locations) {
-            //res.send(locations);
-            res.render('stations', {stations: locations});
-        });
+router.get('/', function (req, res, next) {
+    if (req.query.s) {
+        hafas.locations(req.query.s, {addresses: false, poi: false, linesOfStops: true, language: 'de'})
+            .then(function (locations) {
+                //res.send(locations);
+                res.render('stations', {title: req.query.s, stations: locations});
+            });
+    } else {
+        res.render('search', {title: ""})
+    }
 });
 
 router.get('/departures', function (req, res, next) {
@@ -27,16 +31,19 @@ router.get('/departures', function (req, res, next) {
     let dur = parseInt(req.query.d);
     if (isNaN(dur))
         dur = 30;
-    hafas.departures(req.query.id, {when: time, duration: dur, language: 'de'})
-        .then(function (departures) {
-            let title = "Departures";
-            if (departures.length > 0)
-                title = departures[0].station.name || title;
-            res.render('departures',
-                {
-                    title: title,
-                    departures: departures,
-                    dateFormat: dateFormat
+    hafas.location(req.query.id, {language: 'de'}).then(
+        function (stop) {
+            function render(departures) {
+                res.render('departures',
+                    {
+                        title: stop.name,
+                        departures: departures,
+                        dateFormat: dateFormat
+                    });
+            }
+            hafas.departures(req.query.id, {when: time, duration: dur, language: 'de'})
+                .then(function (d) {
+                    render(d)
                 });
         });
 });
