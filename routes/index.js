@@ -16,7 +16,7 @@ router.get('/', function (req, res, next) {
                 res.render('stations', {title: req.query.s, stations: locations});
             });
     } else {
-        res.render('search', {title: ""})
+        res.render('search', {title: "NahSH - Bookmark"})
     }
 });
 
