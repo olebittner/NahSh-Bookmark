@@ -15,7 +15,7 @@ block content
                         td(class='mdl-data-table__cell--non-numeric' align='center')= dateFormat(new Date(departure.when), "HH:MM")
                         td(class='mdl-data-table__cell--non-numeric')
                             if departure.delay
-                                = departure.delay
+                                = departure.delay/60
                             else
                         td(class='mdl-data-table__cell--non-numeric')= departure.line.name
                         td(class='mdl-data-table__cell--non-numeric')= departure.direction
