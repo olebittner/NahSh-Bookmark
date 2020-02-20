@@ -8,19 +8,22 @@ a {
 
 table {
   width:auto;
-  max-width: 90%;
+  max-width: 95%;
 }
 td {
   white-space:nowrap;
 }
 td:last-child {
-  width:100%;
+  white-space: normal;
 }
 
 .centered-body {
-  padding-top: 10px;
-  max-width: 35%;
-  margin: 0 auto;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  max-width: 100%;
 }
 
 .header {
@@ -31,4 +34,5 @@ td:last-child {
   height: 70px;
   background-color: #cc0025;
   color: #FFFFFF;
+  text-transform:capitalize;
 }

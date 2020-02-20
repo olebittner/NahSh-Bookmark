@@ -1,14 +1,15 @@
 extends search
 
 block results
-    table(class='mdl-data-table mdl-js-data-table')
-        tr
-            th(class='mdl-data-table__cell--non-numeric' align='center') ID
-            th(class='mdl-data-table__cell--non-numeric') Name
-            th(class='mdl-data-table__cell--non-numeric') Lines
+    div.centered-body
+        table(class='mdl-data-table mdl-js-data-table')
+            tr
+                th(class='mdl-data-table__cell--non-numeric' align='center') ID
+                th(class='mdl-data-table__cell--non-numeric') Name
+                th(class='mdl-data-table__cell--non-numeric') Lines
 
-        each station in stations
-            tr(onclick=`window.location='/departures?id=${station.id}'`)
-                td(class='mdl-data-table__cell--non-numeric' align='center')= station.id
-                td(class='mdl-data-table__cell--non-numeric')= station.name
-                td(class='mdl-data-table__cell--non-numeric')= station.lines.map(function (line) { return line.name; }).join(", ")
+            each station in stations
+                tr(onclick=`window.location='/departures?id=${station.id}'`)
+                    td(class='mdl-data-table__cell--non-numeric' align='center')= station.id
+                    td(class='mdl-data-table__cell--non-numeric')= station.name
+                    td(class='mdl-data-table__cell--non-numeric')= station.lines.map(function (line) { return line.name; }).join(", ")
